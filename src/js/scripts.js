@@ -10,7 +10,7 @@ let burger = document.querySelector(".burger-menu"),     //burger menu
     peopleSlider = document.querySelector(".people-line"), 
     peoples = document.querySelectorAll(".people"),       
     peopleWidth = peoples[0].clientWidth,
-    peopleSliderWidth = peopleSlider.clientWidth,
+    peopleSliderWidth = peopleSlider.getBoundingClientRect().width,
     filter = document.querySelectorAll(".filter"),     //filters
     filterName,
     filterImages = document.querySelectorAll(".l-w-photo"),
