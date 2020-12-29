@@ -1,0 +1,780 @@
+@import helper/vars
+@import helper/mixin
+@import components/header
+@import components/footer
+
+@font-face
+  font-family: 'Roboto Slab'
+  src: url('../fonts/RobotoSlab-Regular.eot')
+  src: url('../fonts/RobotoSlab-Regular.eot?#iefix') format("embedded-opentype"), url('../fonts/RobotoSlab-Regular.woff2') format("woff2"), url('../fonts/RobotoSlab-Regular.woff') format("woff"), url('../fonts/RobotoSlab-Regular.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Myriad Pro'
+  src: url('../fonts/MyriadPro-Regular.eot')
+  src: url('../fonts/MyriadPro-Regular.eot?#iefix') format("embedded-opentype"), url('../fonts/MyriadPro-Regular.woff2') format("woff2"), url('../fonts/MyriadPro-Regular.woff') format("woff"), url('../fonts/MyriadPro-Regular.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('../fonts/Montserrat-Regular.eot')
+  src: url('../fonts/Montserrat-Regular.eot?#iefix') format("embedded-opentype"), url('../fonts/Montserrat-Regular.woff2') format("woff2"), url('../fonts/Montserrat-Regular.woff') format("woff"), url('../fonts/Montserrat-Regular.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('../fonts/Montserrat-Bold.eot')
+  src: url('../fonts/Montserrat-Bold.eot?#iefix') format("embedded-opentype"), url('../fonts/Montserrat-Bold.woff2') format("woff2"), url('../fonts/Montserrat-Bold.woff') format("woff"), url('../fonts/Montserrat-Bold.ttf') format("truetype")
+  font-weight: bold
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Roboto Slab'
+  src: url('../fonts/RobotoSlab-Bold.eot')
+  src: url('../fonts/RobotoSlab-Bold.eot?#iefix') format("embedded-opentype"), url('../fonts/RobotoSlab-Bold.woff2') format("woff2"), url('../fonts/RobotoSlab-Bold.woff') format("woff"), url('../fonts/RobotoSlab-Bold.ttf') format("truetype")
+  font-weight: bold
+  font-style: normal
+  font-display: swap
+
+html 
+  font-size: 14px
+
+body 
+  font-family: 'Roboto Slab', serif
+  margin: 0 
+
+a 
+  text-decoration: none
+
+.montserrat,
+h2,
+.feature-title,
+.l-w-title,
+.date,
+h3
+  font-family: 'Montserrat', sans-serif
+
+.myriad,
+.name
+  font-family: 'Myriad Pro', sans-serif
+
+.popup 
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 11
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.7)
+
+.popup-form
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 45%
+  padding: 3%
+  box-sizing: border-box
+  text-align: center
+  background-color: #fff
+  border-radius: 30px
+  h2 
+    margin-top: 0
+  .register-submit+label 
+    width: 0
+    padding: 0
+  p:last-child
+    margin-bottom: 0
+    padding-top: 10px
+
+.close-popup
+  position: absolute
+  top: 15px
+  right: 20px
+  width: 20px
+  height: 20px
+  &::before,
+  &::after
+    content: ''
+    position: absolute
+    top: 50%
+    left: 0
+    width: 100%
+    height: 2px
+    background-color: $text-dark
+  &::before
+    transform: rotate(45deg)
+  &::after
+    transform: rotate(-45deg)
+    
+
+.register-input
+  width: 100%
+  padding: 10px
+  box-sizing: border-box
+
+.register-submit
+  padding: 15px
+
+
+
+.scroll-button
+  display: none
+  justify-content: center
+  align-items: center
+  position: fixed
+  z-index: 10
+  bottom: 5vw
+  right: 5vw
+  width: 70px
+  height: 70px
+  background-color: #ddd
+  border-radius: 50%
+  border: 3px solid $primary
+  transition: all .5s ease-in
+  box-sizing: border-box
+  &::before
+    content: ''
+    transform: rotate(45deg) translate(25%,25%)
+    width: 15px
+    height: 15px
+    border: 3px solid transparent
+    border-top-color: $primary
+    border-left-color: $primary
+    box-sizing: border-box
+  &:hover 
+    cursor: pointer
+
+.wrapper
+  width: 80% 
+  margin: 0 auto
+
+.button 
+  display: inline-block
+  font-size: 1.15rem
+  text-transform: uppercase
+  padding: 14px 0
+  min-width: 180px
+  color: $white
+  border: 2px solid $white
+  border-radius: 2px
+  transition: all .5s ease
+  &:hover 
+    color: $primary
+    background-color: $white
+
+section 
+  color: $text-dark
+  padding: 100px 0
+  text-align: center
+
+h2, 
+.sprite-line
+  position: relative
+  font-size: 1.5rem
+  line-height: 1.6rem
+  text-transform: uppercase
+  margin-bottom: 60px
+  &::before
+    content: ''
+    position: absolute
+    bottom: -30px
+    left: calc( 50% - 25px )
+    width: 50px
+    height: 2px
+    background-color: $text-dark
+
+.subtitle 
+  font-size: 1.15rem 
+  line-height: 1.6rem
+  margin-bottom: 50px
+
+.features-line 
+  display: flex 
+  justify-content: space-between
+  margin: 0 -20px
+  a 
+    color: $text-dark
+
+.feature 
+  position: relative
+  margin: 0 20px
+
+.picture
+  display: block
+  width: 91px
+  height: 91px
+  margin: 0 auto 30px
+  border-radius: 50%
+  background-image: url(../img/sprite.png)
+
+.hover
+  position: absolute
+  top: 0
+  left: 0 
+  width: 100%
+  height: 100%
+
+.typography  
+  .picture
+    background-position: 0 -93px
+    transition: all .7s ease
+  .hover:hover+.picture  
+    background-position: 0 0
+    
+
+.code  
+  .picture
+    background-position: -93px -93px  
+    transition: all .7s ease
+  .hover:hover+.picture 
+    background-position: -93px 0
+
+.support    
+  .picture
+    background-position: -186px -93px
+    transition: all .7s ease
+  .hover:hover+.picture 
+    background-position: -186px 0
+
+.feature-title 
+  line-height: 1.6rem
+  text-transform: uppercase
+
+.about-feature 
+  line-height: 1.6rem 
+
+.about-us 
+  background-color: #f8f8f8
+
+.about-us-line
+  display: flex
+  justify-content: space-between
+  text-align: left
+  margin: 0 -16px 70px
+  p 
+    line-height: 1.6rem
+    margin: 0 16px
+
+.people-relative
+  position: relative
+
+.people-line
+  overflow: hidden
+  display: flex
+  justify-content: space-between
+  margin: 0 -15px
+
+.str
+  position: absolute 
+  top: 35%
+  z-index: 1
+  width: 38px
+  height: 35px
+  background-color: #c3c3c3
+  transition: all .5s ease
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 8px
+    height: 14px
+    transform: translate(-50%, -50%)
+    background-image: url(../img/sprite.png)
+    background-position: 0 -191px
+  &:hover 
+    background-color: $primary
+
+.str-left 
+  left: 0
+
+.str-right 
+  right: 0
+  &::before
+    transform: rotate(180deg) translate(50%, 50%)
+
+.people-photo
+  position: relative
+  img 
+    width: 100%
+    
+.people 
+  position: relative
+  flex: 0 0 25%
+  padding: 0 15px
+  box-sizing: border-box
+  &:hover .soc-line
+    opacity: 1
+
+
+.soc-line 
+  position: absolute
+  bottom: 32px
+  left: calc( 50% - 56px )
+  width: 112px
+  height: 28px
+  transition: all .5s ease
+  opacity: 0
+  a 
+    display: inline-block 
+    position: relative
+    width: 28px
+    height: 28px 
+    transition: all .5s ease
+    &::before
+      content: ''
+      position: absolute 
+      top: 50%
+      left: 50%
+      background-image: url(../img/sprite.png)
+      transform: translate(-50%, -50%)
+    &:hover 
+      background-color: $primary
+  .fb:before 
+    width: 9px
+    height: 16px
+    background-position: -11px -191px
+  .tw:before 
+    width: 16px
+    height: 13px 
+    background-position: -24px -191px
+  .gg:before 
+    width: 16px
+    height: 16px
+    background-position: -44px -191px
+  .in:before 
+    width: 14px
+    height: 14px
+    background-position: -64px -191px
+
+.name 
+  text-transform: uppercase
+  line-height: 1.6rem
+
+.profession 
+  font-size: 0.9rem
+  line-height: 1.6
+
+.l-w-menu
+  display: flex 
+  justify-content: space-between
+  width: 40%
+  margin: 0 auto 70px
+  padding: 0
+  list-style: none  
+  a 
+    color: $text-dark 
+    transition: all .5 ease
+    &:hover 
+      color: $primary
+
+.l-w-list 
+  display: flex 
+  flex-wrap: wrap
+  margin: 0 -10px
+
+.l-w-photo 
+  position: relative 
+  color: $white 
+  line-height: 1.6rem
+  width: 31%
+  margin: 0 10px 30px
+  img 
+    width: 100%
+    height: 100%
+
+.l-w-hover 
+  opacity: 0
+  position: absolute 
+  display: flex 
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(192, 48, 28, 0.7)
+  transition: all .3s ease
+  &:hover 
+    opacity: 1
+  .button 
+    position: relative
+    min-width: 10px
+    padding: 14px 40px 14px 20px
+    &:hover 
+      &:before 
+        border-color: $primary
+    &::before
+      content: ''
+      position: absolute 
+      top: calc( 50% - 5px )
+      right: 20px
+      width: 8px
+      height: 8px
+      border: 1px solid $white
+      border-left: none 
+      border-bottom: none
+      transform: rotate(45deg)
+      transition: all .5s ease
+
+.l-w-title 
+  font-size: 1.3rem
+
+.l-w-subtitle 
+  font-size: 0.9rem 
+
+.like 
+  background: url(../img/bg_main.jpg), rgba(192, 48, 28, 0.6)
+  background-size: cover
+  a:hover 
+    cursor: pointer
+
+.lets-talk 
+  font-size: 2.1rem
+  line-height: 3rem
+  color: $white
+
+.post 
+  display: flex
+  justify-content: space-between
+  text-align: left
+  padding: 40px 0
+  &:hover .hover-red
+    color: $primary
+
+.post-info 
+  padding-left: 40px 
+
+.date 
+  display: inline-flex
+  flex-direction: column 
+  align-items: center
+  justify-content: center
+  width: 77px
+  height: 77px
+  font-size: 1.6rem
+  font-weight: 700
+  color: #777
+  vertical-align: top
+  border: 2px solid $text-dark
+  p 
+    margin: 0
+
+.month 
+  font-size: 1rem
+
+.block-title 
+  display: inline-block
+  padding-left: 25px
+  p 
+    margin: 0
+  .subtitle 
+    font-size: 0.9rem
+    font-style: italic
+    color: #777
+
+h3
+  font-size: 1.1rem
+  line-height: 1.6rem
+  text-transform: uppercase
+  margin: 10px 0
+
+.about-post 
+  line-height: 1.6rem
+
+.read-more 
+  font-size: 0.9rem
+  letter-spacing: 1px
+  line-height: 1.6rem
+  font-weight: 700
+  text-transform: uppercase
+  color: #777
+  &:hover 
+    color: $primary
+
+hr 
+  border: none
+  border-top: 1px solid #ddd
+
+.slider 
+  background-color: #f8f8f8
+  p 
+    font-size: 1.2rem
+    line-height: 2.1rem 
+    font-style: italic
+    margin-bottom: 40px
+  cite 
+    font-size: 1.5rem 
+    font-style: normal
+
+.cites 
+  position: relative
+  margin-bottom: 40px
+  transition: all .5s ease
+
+.cite 
+  position: absolute
+  margin: 0
+  padding: 0 10%
+  box-sizing: border-box
+  top: 0
+  left: 0
+  width: 100%
+  opacity: 0
+  transition: all 1s ease
+
+.showed-cite 
+  opacity: 1
+
+.slider-wrapper 
+  width: 60%
+  margin: 0 auto
+
+.companies
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 70px
+  img 
+    margin: 0 10px
+
+.slide 
+  display: flex
+  justify-content: space-between
+  padding: 0 46%
+
+.slide-button
+  z-index: 1
+  width: 13px
+  height: 13px
+  border-radius: 50%
+  background-color: #ddd
+  transition: all .5s ease
+  &:hover
+    cursor: pointer
+
+.info 
+  display: inline-flex 
+  flex-direction: column
+  width: 30%
+  text-align: left
+  padding: 0 10px 0 30px
+  box-sizing: border-box
+  b 
+    position: relative
+    line-height: 2.1rem 
+    text-transform: uppercase
+    margin-bottom: 20px
+    &:before 
+      content: ''
+      position: absolute 
+      top: 0 
+      left: -30px 
+      background-image: url(../img/sprite.png)
+  p 
+    margin: 5px 0
+  div 
+    margin-bottom: 35px
+
+.address 
+  b:before 
+    width: 12px
+    height: 17px
+    background-position: -81px -191px
+
+.hotline 
+  b:before 
+    width: 12px
+    height: 20px
+    background-position: -96px -191px
+
+.email 
+  b:before 
+    width: 15px
+    height: 12px
+    background-position: -111px -191px
+
+.registr-form 
+  display: inline-block
+  width: 70%
+  vertical-align: top
+  input,
+  textarea 
+    width: 100%
+    padding: 17px
+    border: 1px solid #555555
+    box-sizing: border-box
+    border-radius: 0
+    &:focus
+      border-color: $primary
+    &::-webkit-input-placeholder
+      font-size: 0.9em
+      text-transform: uppercase
+
+.mini-input-line
+  display: flex
+  justify-content: space-between
+  margin: 0 -10px 20px
+  input 
+    width: 50%
+    height: 45px
+    box-sizing: border-box
+    margin: 0 10px
+    
+
+.input-line 
+  text-align: left
+  margin-bottom: 20px
+
+textarea 
+  height: 105px
+    
+.submit-line
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+input.submit 
+  width: 25% 
+  min-width: 150px
+  text-align: center
+  text-transform: uppercase
+  background-color: transparent
+  color: $text-dark
+  transition: all .5s ease
+  &:hover 
+    border-color: $primary 
+    color: $primary
+
+.submit+label
+  width: 75%
+  padding-left: 40px
+  font-size: 0.9em
+
+.red 
+  color: $primary
+
+@media screen and (max-width: 1200px)
+  .str 
+    top: 30%
+
+  .post 
+    img 
+      width: 40%
+    
+  .block-title 
+    padding-left: 15px
+
+  .companies
+    flex-wrap: wrap
+    justify-content: center
+  
+@media screen and (max-width: 990px)
+  .menu 
+    li
+      margin: 0 1vw
+
+  .wrapper 
+    width: 85%
+
+  .post 
+    display: block
+    text-align: center
+    img 
+      width: 100%
+      max-height: 300px
+      object-position: center
+      margin-bottom: 20px
+
+  .post-info 
+    padding: 0
+
+  .block-title
+    text-align: left
+
+  .info 
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    justify-content: space-around
+    width: 100%
+    padding: 0
+    div 
+      padding-left: 30px
+
+  .registr-form 
+    display: block
+    width: 100%
+
+@media screen and (max-width: 768px)
+  .menu 
+    display: none
+    width: 100vw
+    height: 100vh
+    box-sizing: border-box
+    margin: 0  
+    ul 
+      flex-direction: column
+      padding: 0  
+    li 
+      font-size: 1.3rem
+      font-weight: bold
+      line-height: 2rem
+
+  .burger-menu 
+    display: block
+      
+  .burger-menu-active 
+    position: fixed
+    z-index: 15
+    top: 0
+    left: 0
+    width: 100vw
+    flex-wrap: wrap
+    padding: 7.5%
+    box-sizing: border-box
+    background-color: rgba(192, 48, 28, 0.9)
+
+@media screen and (max-width: 520px)
+  .info
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    div 
+      padding: 0
+
+  .input-line 
+    margin: 0
+  
+  .mini-input-line
+    flex-wrap: wrap
+    justify-content: start
+    margin: 0 
+
+  input.mini-input,
+  textarea 
+    display: block
+    width: 100%
+    margin: 0 0 20px
+
+  .submit-line 
+    display: block
+    input.submit,
+    .submit+label  
+      display: block
+      width: 100%
+
+  .submit+label  
+    text-align: center
+    padding: 10px 0
+    margin: 0

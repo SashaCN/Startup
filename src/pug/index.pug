@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0")
+		title STARTUP - Creative Agency Template
+		link(rel="stylesheet", href="css/style.css")
+	body
+		include helper/vars
+		include helper/mixin
+		include components/header
+		main 
+			.popup 
+				form.popup-form(action="index.php", method="get")
+					span.close-popup
+					h2 registration
+					p 
+						input#popup-name.register-input(type="text", name="popup-name" placeholder="Your name" maxlength="30")
+						label(for="popup-name")
+					p 
+						input#popup-email.register-input(type="email", name="popup-email" placeholder="Your e-mail" maxlength="40")
+						label(for="popup-email")
+					p 	
+						input#popup-password.register-input(type="password", name="popup-password" placeholder="Your password")
+						label(for="popup-password")
+					p 
+						input#popoup-submit.submit.register-submit(type="submit", value="Register")
+						label(for="submit")
+			.scroll-button
+			.wrapper 
+				section.services 
+					h2 Services
+					p.subtitle We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+					.features-line 
+						.feature.typography
+							span.hover
+							.picture
+							strong.feature-title Clean Typography
+							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
+						.feature.code
+							span.hover
+							.picture
+							strong.feature-title Rock Solid Code
+							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
+						.feature.support
+							span.hover
+							.picture
+							strong.feature-title Expert Support
+							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
+			section.about-us 
+				.wrapper 
+					h2 About us 
+					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+					.about-us-line 
+						p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+						p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
+					.people-relative
+						a.str.str-left(href="#")
+						a.str.str-right(href="#")
+						.people-line
+							+people('img/people_first.jpg', '#', '#', '#', '#', 'Md. Khalil Uddin', 'Head of Ideas')
+							+people('img/people_second.jpg', '#', '#', '#', '#', 'Rubel Miah', 'Lead WordPress Developer')
+							+people('img/people_third.jpg', '#', '#', '#', '#', 'Shamim Mia', 'Sr. Web Developer')
+							+people('img/people_fourth.jpg', '#', '#', '#', '#', 'John Doe', 'Front-end Developer')
+							+people('img/people_fifth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
+							+people('img/people_sixth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
+			.wrapper 
+				section.latest-work
+					h2 Latest Works
+					ul.l-w-menu 
+						li
+							a.filter(href="#") All
+						li
+							a.filter(href="#") Branding
+						li
+							a.filter(href="#") Design
+						li
+							a.filter(href="#") Development
+						li
+							a.filter(href="#") Strategy
+					.l-w-list 
+						+last-work("img/lw_first.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
+						+last-work("img/lw_second.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
+						+last-work("img/lw_third.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
+						+last-work("img/lw_fourth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
+						+last-work("img/lw_fifth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
+						+last-work("img/lw_sixth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
+						+last-work("img/lw_seventh.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
+						+last-work("img/lw_eighth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
+						+last-work("img/lw_ninth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
+			section.like 
+				.wrapper 
+					p.lets-talk Do you like OUR WORK so far? <br> Let's talk about YOUR PROJECT!
+					a.button.scroll-down-button Get in Touch
+			.wrapper 
+				section.blog 
+					h2 Recent blog posts 
+					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet 
+					.post 
+						img(src="img/blog_first.jpg", alt="Startup ideas")
+						.post-info 
+							.date 
+								p.number 18 
+								p.month Oct
+							.block-title 
+								h3.hover-red Startup ideas needs to be funded 
+								p.subtitle By 
+									span.hover-red Khalil 
+									span Uddin in 
+									span.hover-red Development 
+							p.about-post Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam
+							a.read-more(href="#") Read more 
+					hr 
+					.post 
+						img(src="img/blog_second.jpg", alt="Startup ideas")
+						.post-info 
+							.date 
+								p.number 18 
+								p.month Oct
+							.block-title 
+								h3.hover-red User Interface Designing Elements 
+								p.subtitle By 
+									span.hover-red Khalil 
+									span Uddin in 
+									span.hover-red Development 
+							p.about-post Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor idunt ut labore et dolore aliquyam
+							a.read-more(href="#") Read more 
+			section.slider 
+				.slider-wrapper 
+					.companies 
+						img(src="img/logo_first.png", alt="Deorham networks")
+						img(src="img/logo_second.png", alt="Ratings")
+						img(src="img/logo_third.png", alt="Malik Media")
+						img(src="img/logo_fourth.png", alt="Bcause")
+						img(src="img/logo_fifth.png", alt="Womqily")
+					.cites 
+						blockquote.cite
+							p “Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+							cite John Doe, Google Inc.
+						blockquote.cite
+							p “You only live once, but if you do it right, once is enough.”
+							cite Mae West, actress.
+						blockquote.cite
+							p “Life is what happens to us while we are making other plans.”
+							cite Allen Saunders, writer.
+					.slide 
+						span#sdf1.slide-button
+						span#sdf2.slide-button
+						span#sdf3.slide-button
+			.wrapper 
+				section.registr 
+					h2 Get in touch 
+					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+					.info 
+						.address 
+							b.myriad Address
+							p.first 312, 7th Ave, New York
+							p.second NY 101200, United States of America
+						.hotline 
+							b.myriad Hotline (24x7) 
+							p.first +65 0052 300, +65 88251 210
+							p.second +88 01723 511 340
+						.email
+							b.myriad E-mail 
+							p.first shapedtheme@gmail.com 
+							p.second khalilkode@gmail.com 	
+					form.registr-form(action="index.php", method="GET")
+						.mini-input-line 
+							input#name.mini-input(type="text", name="name" placeholder="Your name" maxlength="30")
+							label(for="name")
+							input#email.mini-input(type="email", name="email" placeholder="Your e-mail" maxlength="40")
+							label(for="email")
+						.mini-input-line 
+							input#subject.mini-input(type="text", name="name" placeholder="Your subject" maxlength="30")
+							label(for="name")
+							input#company-name.mini-input(type="email", name="email" placeholder="Company name" maxlength="30")
+							label(for="email")
+						.input-line 
+							textarea#message.mini-input(type="text", name="name" placeholder="Write your message" maxlength="300")
+							label(for="message")
+						.input-line.submit-line 
+							input#submit.submit(type="submit", value="Send message")
+							label(for="submit") <span	class="red"> * </span> We’ll contact you as as possible. We don’t reply on Monday.
+		script(src="js/scripts.js")
+		include components/footer

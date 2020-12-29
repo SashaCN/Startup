@@ -1,0 +1,19 @@
+mixin people(src, fb, tw, gg, lin, name, profession)
+  .people 
+    .people-photo 
+      img(src=src, alt=name)
+      .soc-line 
+        a.fb(href=fb)
+        a.tw(href=tw)
+        a.gg(href=gg)
+        a.in(href=lin)
+    p.name= name
+    p.profession= profession
+
+mixin last-work(src, title, subtitle, href, filter)
+  div(class=filter)
+    img(src=src, alt=title)
+    .l-w-hover 
+      strong.l-w-title= title 
+      p.l-w-subtitle= subtitle 
+      a.button(href=href) view 

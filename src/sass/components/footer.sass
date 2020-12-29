@@ -1,0 +1,30 @@
+footer 
+  background-color: $primary
+  .sprite-line:before 
+    background-color: #fff
+
+
+.soc 
+  position: relative 
+  display: inline-block
+  width: 35px
+  height: 35px
+  margin: 0 7px 
+  border: 1px solid #fff
+  border-radius: 50%
+  &:before 
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 17px
+    height: 13px
+    transform: translate(-50%, -50%)
+    background-image: url(../img/sprite.png)
+    background-position: -22px -191px
+
+.copy 
+  font-size: 0.9rem
+  line-height: 1.5rem 
+  color: $white
+  text-transform: uppercase

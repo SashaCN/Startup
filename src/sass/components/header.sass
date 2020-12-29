@@ -1,0 +1,76 @@
+header 
+  font-family: 'Montserrat', sans-serif
+  padding: 30px 0
+  color: $white
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../img/bg_header.jpg) center no-repeat $primary
+  background-size: cover
+  a 
+    color: $white
+    text-decoration: none
+
+.line-menu 
+  display: flex 
+  justify-content: space-between
+  img 
+    padding: 10px 0
+  ul 
+    display: flex 
+    justify-content: space-between
+    list-style: none
+    a 
+      position: relative
+      &::before
+        content: ''
+        position: absolute 
+        bottom: -5px
+        left: -15%  
+        width: 130% 
+        height: 2px
+        background-color: $white
+        border-radius: 1px
+        transition: all .5s ease
+        transform: scaleX(0)
+      &:hover 
+        &:before 
+          transform: scaleX(1)
+
+.menu 
+  width: 70%
+
+.burger-menu 
+  display: none
+  span
+    position: relative
+    display: inline-block
+    margin: 15px 0
+  span,
+  span:before,
+  span:after
+    width: 50px
+    height: 10px
+    background-color: #fff
+    border-radius: 3px
+  span:before,
+  span:after
+    content: ''
+    position: absolute
+    left: 0
+  span:before
+    top: -15px
+  span:after
+    bottom: -15px
+  &:hover
+    cursor: pointer
+
+.header-content 
+  width: 80%
+  margin: 260px auto
+  text-align: center 
+  p
+    font-size: 1.5rem
+    margin-bottom: 50px
+
+h1 
+  font-size: 3.5rem
+  line-height: 4rem
+  text-transform: uppercase
