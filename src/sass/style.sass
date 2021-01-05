@@ -65,7 +65,8 @@ h3
 .name
   font-family: 'Myriad Pro', sans-serif
 
-.popup 
+.popup,
+.l-popup 
   display: none
   position: fixed
   top: 0
@@ -95,7 +96,8 @@ h3
     margin-bottom: 0
     padding-top: 10px
 
-.close-popup
+.close-popup,
+.l-close-popup
   position: absolute
   top: 15px
   right: 20px
@@ -114,6 +116,8 @@ h3
     transform: rotate(45deg)
   &::after
     transform: rotate(-45deg)
+  &:hover 
+    cursor: pointer
     
 
 .register-input
@@ -664,6 +668,16 @@ input.submit
 .red 
   color: $primary
 
+.l-popup-form
+  position: absolute
+  top: 50%
+  left: 50%
+  padding: 3%
+  transform: translate(-50%, -50%)
+  background-color: #fff
+  border-radius: 30px
+
+
 @media screen and (max-width: 1200px)
   .str 
     top: 30%
@@ -778,3 +792,4 @@ input.submit
     text-align: center
     padding: 10px 0
     margin: 0
+

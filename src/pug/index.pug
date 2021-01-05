@@ -64,6 +64,8 @@ html(lang="en")
 							+people('img/people_fourth.jpg', '#', '#', '#', '#', 'John Doe', 'Front-end Developer')
 							+people('img/people_fifth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
 							+people('img/people_sixth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
+							+people('img/people_fifth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
+							+people('img/people_sixth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
 			.wrapper 
 				section.latest-work
 					h2 Latest Works
@@ -83,8 +85,8 @@ html(lang="en")
 						+last-work("img/lw_second.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
 						+last-work("img/lw_third.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
 						+last-work("img/lw_fourth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
-						+last-work("img/lw_fifth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
-						+last-work("img/lw_sixth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
+						+last-work("img/lw_fifth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding Development")
+						+last-work("img/lw_sixth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Development")
 						+last-work("img/lw_seventh.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
 						+last-work("img/lw_eighth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
 						+last-work("img/lw_ninth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
@@ -164,7 +166,7 @@ html(lang="en")
 							b.myriad E-mail 
 							p.first shapedtheme@gmail.com 
 							p.second khalilkode@gmail.com 	
-					form.registr-form(action="index.php", method="GET")
+					form.registr-form(method="GET")
 						.mini-input-line 
 							input#name.mini-input(type="text", name="name" placeholder="Your name" maxlength="30")
 							label(for="name")
@@ -179,7 +181,27 @@ html(lang="en")
 							textarea#message.mini-input(type="text", name="name" placeholder="Write your message" maxlength="300")
 							label(for="message")
 						.input-line.submit-line 
-							input#submit.submit(type="submit", value="Send message")
+							input#submit.submit.call-popup(type="submit", value="Send message")
 							label(for="submit") <span	class="red"> * </span> We’ll contact you as as possible. We don’t reply on Monday.
+			.l-popup 
+				form.registr-form.l-popup-form(action="index.php", method="GET")
+					p All information is correct?
+					span.l-close-popup
+					.mini-input-line 
+						input#name-check.mini-input.name-check(type="text", name="name" placeholder="Your name" maxlength="30")
+						label(for="name-check")
+						input#email-check.mini-input.mail-check(type="email", name="email" placeholder="Your e-mail" maxlength="40")
+						label(for="email-check")
+					.mini-input-line 
+						input#subject-check.mini-input.subject-check(type="text", name="name" placeholder="Your subject" maxlength="30")
+						label(for="subject-check")
+						input#company-name-check.mini-input.company-name-check(type="email", name="email" placeholder="Company name" maxlength="30")
+						label(for="company-name-check")
+					.input-line 
+						textarea#message-check.mini-input.message-check(type="text", name="name" placeholder="Write your message" maxlength="300")
+						label(for="message-check")
+					.input-line.submit-line 
+						input#submit-check.submit(type="submit", value="Send message")
+						label(for="submit-check") <span	class="red"> * </span> We’ll contact you as as possible. We don’t reply on Monday.
 		script(src="js/scripts.js")
 		include components/footer

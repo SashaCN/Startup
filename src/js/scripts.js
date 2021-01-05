@@ -26,7 +26,23 @@ let burger = document.querySelector(".burger-menu"),     //burger menu
     showedCite,
     parentPadding,
     number,
-    clearCiteInterval
+    clearCiteInterval,
+    lCallPopup = document.querySelector(".call-popup"),     //lower popup
+    lPopup = document.querySelector(".l-popup"),     //lower popup with background 
+    lPopupForm = document.querySelector(".l-popup-form"),      //lower popup
+    lClosePopup = document.querySelector(".l-close-popup"),     //lower close popup
+    name = document.querySelector("#name"),     //registr inputs
+    email = document.querySelector("#email"),
+    subject = document.querySelector("#subject"),
+    companyName = document.querySelector("#company-name"),
+    message = document.querySelector("#message"),
+    registInputs = [name, email, subject, companyName, message],
+    nameCheck = document.querySelector(".name-check"),     //check registr inputs
+    emailCheck = document.querySelector(".email-check"),
+    subjectCheck = document.querySelector(".subject-check"),
+    companyNameCheck = document.querySelector(".company-name-check"),
+    messageCheck = document.querySelector(".message-check"),
+    registCheckInputs = [nameCheck, emailCheck, subjectCheck, companyNameCheck, messageCheck]
 
 burger.dataset.activeCheck = "false"
 
@@ -70,12 +86,22 @@ right.onclick = peopleRight
 
 function peopleLeft (event){
   event.preventDefault()
-  peopleSlider.scroll(peopleSliderWidth-peopleWidth, 0)
+  peopleSliderWidth = Math.floor(peopleSliderWidth)
+  if(peopleSlider.scrollLeft == 0){
+    peopleSlider.scroll(peopleSliderWidth, 0)
+  }else{
+    peopleSlider.scroll(peopleSlider.scrollLeft-peopleWidth, 0)
+  }
 }
 
 function peopleRight (event){
   event.preventDefault()
-  peopleSlider.scroll(peopleSliderWidth+peopleWidth, 0)
+  peopleSliderWidth = Math.floor(peopleSliderWidth)
+  if(peopleSlider.scrollLeft == (peoples.length-4)*peopleWidth){
+    peopleSlider.scroll(0, 0)
+  }else{
+    peopleSlider.scroll(peopleSlider.scrollLeft+peopleWidth, 0)
+  }
 }
 
 filter.forEach((element)=>{
@@ -194,4 +220,27 @@ function showCite (){
       citeInterval ()
     }
   })
+}
+
+lCallPopup.onclick = lPopupOpen
+lClosePopup.onclick = lPopupClose
+
+function lPopupOpen (event){
+  event.preventDefault()
+  for(i = 0; i < registInputs.length; i++){
+    if(registInputs[i].value != ""){
+      lPopup.style.display = `block`
+      registInputs[i].style.borderColor = `#555`
+      registCheckInputs[i].value = registInputs[i].value
+    }else{
+      registInputs[i].style.borderColor = `#c0301c`
+      lPopup.style.display = `none`
+      break
+    }
+  }
+  
+}
+
+function lPopupClose () {
+  lPopup.style.display = "none"
 }
