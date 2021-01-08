@@ -112,6 +112,7 @@ html(lang="en")
 									span.hover-red Development 
 							p.about-post Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam
 							a.read-more(href="#") Read more 
+					.popup-read-more
 					hr 
 					.post 
 						img(src="img/blog_second.jpg", alt="Startup ideas")
@@ -186,19 +187,19 @@ html(lang="en")
 			.l-popup 
 				form.registr-form.l-popup-form(action="index.php", method="GET")
 					p All information is correct?
-					span.l-close-popup
+					span.close-popup
 					.mini-input-line 
-						input#name-check.mini-input.name-check(type="text", name="name" placeholder="Your name" maxlength="30")
+						input#name-check.mini-input.name-check(type="text", name="name" placeholder="Your name" maxlength="30" readonly)
 						label(for="name-check")
-						input#email-check.mini-input.mail-check(type="email", name="email" placeholder="Your e-mail" maxlength="40")
+						input#email-check.mini-input.email-check(type="email", name="email" placeholder="Your e-mail" maxlength="40" readonly)
 						label(for="email-check")
 					.mini-input-line 
-						input#subject-check.mini-input.subject-check(type="text", name="name" placeholder="Your subject" maxlength="30")
+						input#subject-check.mini-input.subject-check(type="text", name="name" placeholder="Your subject" maxlength="30" readonly)
 						label(for="subject-check")
-						input#company-name-check.mini-input.company-name-check(type="email", name="email" placeholder="Company name" maxlength="30")
+						input#company-name-check.mini-input.company-name-check(type="email", name="email" placeholder="Company name" maxlength="30" readonly)
 						label(for="company-name-check")
 					.input-line 
-						textarea#message-check.mini-input.message-check(type="text", name="name" placeholder="Write your message" maxlength="300")
+						textarea#message-check.mini-input.message-check(type="text", name="name" placeholder="Write your message" maxlength="300" readonly)
 						label(for="message-check")
 					.input-line.submit-line 
 						input#submit-check.submit(type="submit", value="Send message")

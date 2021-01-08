@@ -4,7 +4,8 @@ let burger = document.querySelector(".burger-menu"),     //burger menu
     registration = document.querySelector(".registration"),    //popup call button
     popup = document.querySelector(".popup"),     //popup with background 
     popupForm = document.querySelector(".popup-form"),      //popup
-    closePopup = document.querySelector(".close-popup"),     //close popup
+    closePopup = document.querySelectorAll(".close-popup"),     //close popup
+    activePopup,
     left = document.querySelector(".str-left"),        //slider with people. slide left
     right = document.querySelector(".str-right"),        //slider with people. slide right
     peopleSlider = document.querySelector(".people-line"), 
@@ -22,7 +23,11 @@ let burger = document.querySelector(".burger-menu"),     //burger menu
     scrollPrecent,
     screenSize,
     slideButton = document.querySelectorAll(".slide-button"),
-    cite = document.querySelectorAll(".cite"), //slider showed cite
+    readMore = document.querySelectorAll(".read-more"),     //read more popup
+    popupReadMore = document.querySelector(".popup-read-more"),
+    rMBg,
+    rMP,
+    cite = document.querySelectorAll(".cite"),    //slider showed cite
     showedCite,
     parentPadding,
     number,
@@ -30,19 +35,18 @@ let burger = document.querySelector(".burger-menu"),     //burger menu
     lCallPopup = document.querySelector(".call-popup"),     //lower popup
     lPopup = document.querySelector(".l-popup"),     //lower popup with background 
     lPopupForm = document.querySelector(".l-popup-form"),      //lower popup
-    lClosePopup = document.querySelector(".l-close-popup"),     //lower close popup
     name = document.querySelector("#name"),     //registr inputs
     email = document.querySelector("#email"),
     subject = document.querySelector("#subject"),
     companyName = document.querySelector("#company-name"),
     message = document.querySelector("#message"),
-    registInputs = [name, email, subject, companyName, message],
+    registrInputs = [name, email, subject, companyName, message],
     nameCheck = document.querySelector(".name-check"),     //check registr inputs
     emailCheck = document.querySelector(".email-check"),
     subjectCheck = document.querySelector(".subject-check"),
     companyNameCheck = document.querySelector(".company-name-check"),
     messageCheck = document.querySelector(".message-check"),
-    registCheckInputs = [nameCheck, emailCheck, subjectCheck, companyNameCheck, messageCheck]
+    registrCheckInputs = [nameCheck, emailCheck, subjectCheck, companyNameCheck, messageCheck]
 
 burger.dataset.activeCheck = "false"
 
@@ -62,21 +66,29 @@ function menu (){
 }
 
 registration.onclick = popupOpen
-closePopup.onclick = popupClose
-popup.onclick = checkClick
+
+
+closePopup.forEach((element)=>{
+  element.onclick = popupClose
+})
 
 function popupOpen (event){
   event.preventDefault()
   popup.style.display = "block"
+  popup.classList.add("active-popup")
+  activePopup = document.querySelector(".active-popup")
+  activePopup.onclick = checkClick
 }
 
 function popupClose (){
-  popup.style.display = "none"
+  activePopup.style.display = "none"
+  activePopup.classList.remove("active-popup")
 }
 
 function checkClick (e){
-  if(!popupForm.contains(e.target)){
-    popup.style.display = "none"
+  if(!activePopup.firstElementChild.contains(e.target)){
+    activePopup.style.display = "none"
+    activePopup.classList.remove("active-popup")
   }
 }
 
@@ -159,14 +171,46 @@ function scrollDown (){
   }
 }
 
+//read more popup
+
+readMore.forEach((element)=>{
+  element.onclick = readMoreOpen
+})
+
+function readMoreOpen (e){
+  e.preventDefault()
+  popupReadMore.innerHTML = `
+  <div class="read-more-bg popup">
+    <article class="read-more-popup popup-form">
+      <span class="close-popup"></span>
+      <h2>read more</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam ducimus ea, eligendi consequatur perspiciatis, atque, dolorum reprehenderit nisi nihil itaque natus. Alias, provident. Architecto praesentium dignissimos, ipsum ducimus soluta nulla dolore deserunt animi molestiae ex at esse vitae, nobis dolor suscipit maxime. Iusto aut nostrum obcaecati earum pariatur quibusdam asperiores!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nesciunt eius deserunt maxime autem expedita rem mollitia, et soluta earum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi nesciunt rerum, fugit laudantium alias doloremque animi labore error magnam quia facere doloribus facilis quos unde suscipit iure aliquid odit possimus, aliquam, provident! Voluptate, atque quibusdam harum quas iure, delectus.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat molestiae iusto atque omnis laborum, est ut enim, ratione magni sunt odit reprehenderit facilis? Nostrum modi delectus voluptate maxime, omnis obcaecati.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis nemo assumenda iste recusandae tenetur mollitia voluptatibus error quia optio incidunt sapiente quod dolorum voluptatem odio nihil, at cupiditate! Eligendi, quis aperiam sit, iste et adipisci. Explicabo tempora vitae quia natus, eaque labore itaque quidem, ipsum nostrum sit rerum animi modi ad. Accusantium unde blanditiis, fugit quae odio dolor facilis. Quidem sequi tenetur tempore, natus assumenda a eius velit voluptatem, aliquid sit nostrum mollitia maiores nesciunt quasi, distinctio ipsum qui vero eligendi cumque. Repellat soluta ad atque voluptas sequi officiis et itaque? Placeat voluptatem, porro, qui magni repellendus odit illum necessitatibus rerum officia quaerat reiciendis mollitia ipsum eligendi fugit quo obcaecati distinctio dicta tenetur. Blanditiis rem autem facere est esse sint, quisquam qui eos beatae modi accusantium perferendis voluptatibus vel iusto ducimus non ad, totam incidunt. Eos at debitis eaque fuga amet molestiae laudantium, ut vitae, dicta incidunt velit excepturi placeat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, alias.</p>
+    </article>
+  </div>`
+  rMBg = document.querySelector(".read-more-bg"),
+  rMP = document.querySelector(".read-more-popup"),
+  closePopup = document.querySelectorAll(".close-popup")
+  rMBg.style.display = "block"
+  rMBg.classList.add("active-popup")
+  activePopup = document.querySelector(".active-popup")
+  activePopup.onclick = checkClick
+  closePopup.forEach((element)=>{
+    element.onclick = popupClose
+  })
+}
+
 slideButton.forEach((element)=>{
   element.onclick = showCite
 })
 
 cite[0].classList.add("showed-cite")
 slideButton[0].style.backgroundColor = "#c0301c"
-parentPadding = cite[0].clientHeight
-cite[0].parentElement.style.height = `${parentPadding}px`
+cite[0].parentElement.style.height = `${cite[0].clientHeight}px`
 
 for(let i = 0; i < cite.length; i++){
   cite[i].dataset.number = i
@@ -223,24 +267,22 @@ function showCite (){
 }
 
 lCallPopup.onclick = lPopupOpen
-lClosePopup.onclick = lPopupClose
 
 function lPopupOpen (event){
   event.preventDefault()
-  for(i = 0; i < registInputs.length; i++){
-    if(registInputs[i].value != ""){
+  for(i = 0; i < registrInputs.length; i++){
+    if(registrInputs[i].value != ""){
       lPopup.style.display = `block`
-      registInputs[i].style.borderColor = `#555`
-      registCheckInputs[i].value = registInputs[i].value
+      registrInputs[i].style.borderColor = `#555`
+      console.log(registrInputs[i].value)
+      registrCheckInputs[i].value = registrInputs[i].value
+      lPopup.classList.add("active-popup")
+      activePopup = document.querySelector(".active-popup")
+      activePopup.onclick = checkClick
     }else{
-      registInputs[i].style.borderColor = `#c0301c`
+      registrInputs[i].style.borderColor = `#c0301c`
       lPopup.style.display = `none`
       break
     }
   }
-  
-}
-
-function lPopupClose () {
-  lPopup.style.display = "none"
 }
