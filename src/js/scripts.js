@@ -1,4 +1,6 @@
-let burger = document.querySelector(".burger-menu"),     //burger menu
+let aboutUsText = document.querySelector(".about-us-line"),      //site navigation
+
+    burger = document.querySelector(".burger-menu"),     //burger menu
     burgerMenu = document.querySelector(".menu"),
     menuLine = document.querySelector(".line-menu"),
     registration = document.querySelector(".registration"),    //popup call button
@@ -124,9 +126,7 @@ function filtration (event){
   event.preventDefault()
   filterName = this.textContent
   filterImages.forEach((image)=>{
-    if(filterName == "All"){
-      image.style.display = "block"
-    }else if(image.classList.contains(filterName)){
+    if(filterName == "All" || image.classList.contains(filterName)){
       image.style.display = "block"
     }else{
       image.style.display = "none"
@@ -284,5 +284,16 @@ function lPopupOpen (event){
       lPopup.style.display = `none`
       break
     }
+  }
+}
+//animations 
+window.onwheel = checkScroll
+
+function checkScroll (){
+  console.log(Math.floor(window.pageYOffset))
+  if(Math.floor(window.pageYOffset) >= aboutUsText.firstElementChild.offsetTop-300 && Math.floor(window.pageYOffset) <= aboutUsText.firstElementChild.offsetTop-50){
+    console.log("13")
+    aboutUsText.firstElementChild.classList.add("animation-left")
+    aboutUsText.lastElementChild.classList.add("animation-right")
   }
 }

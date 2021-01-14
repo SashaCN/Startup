@@ -74,8 +74,7 @@ h3
   z-index: 11
   width: 100%
   height: 100%
-  background-color: rgba(0, 0, 0, 0.7)
- 
+  background-color: rgba(0, 0, 0, 0.7)  
 
 .popup-form
   position: absolute
@@ -90,6 +89,8 @@ h3
   border-radius: 30px
   max-height: 80vh
   overflow-y: scroll
+  -ms-overflow-style: none
+  scrollbar-width: none
   h2 
     margin-top: 0
   .register-submit+label 
@@ -98,6 +99,8 @@ h3
   p:last-child
     margin-bottom: 0
     padding-top: 10px
+  &::-webkit-scrollbar
+    display: none
 
 .close-popup
   position: absolute
@@ -121,9 +124,6 @@ h3
   &:hover 
     cursor: pointer
     
-.popup-scroll 
-  
-
 .register-input
   width: 100%
   padding: 10px
@@ -131,8 +131,6 @@ h3
 
 .register-submit
   padding: 15px
-
-
 
 .scroll-button
   display: none
@@ -268,9 +266,14 @@ h2,
   justify-content: space-between
   text-align: left
   margin: 0 -16px 70px
+  overflow: hidden
   p 
     line-height: 1.6rem
     margin: 0 16px
+    &:first-child
+      transform: translateX(-120%)
+    &:last-child
+      transform: translateX(120%)
 
 .people-relative
   position: relative
@@ -560,8 +563,8 @@ hr
 
 .slide 
   display: flex
-  justify-content: space-between
-  padding: 0 46%
+  justify-content: center
+  align-items: center
 
 .slide-button
   z-index: 1
@@ -685,6 +688,54 @@ input.submit
   background-color: #fff
   border-radius: 30px
 
+.animation-fade
+  animation: fade 1s linear
+  animation-fill-mode: forwards
+
+.animation-left
+  animation: anim-left 1s linear 
+  animation-fill-mode: forwards
+
+.animation-right 
+  animation: anim-right 1s linear 
+  animation-fill-mode: backwards
+
+.animation-bottom 
+  animation: anim-bottom 1s linear 
+  animation-fill-mode: backwards
+
+@keyframes fade
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes anim-left
+  0%
+    transform: translateX(-100%)
+    opacity: 0
+  75%
+    transform: translateX(0)
+  100%
+    opacity: 1
+
+@keyframes anim-right
+  0%
+    transform: translateX(100%)
+    opacity: 0
+  75%
+    transform: translateX(0)
+  100%
+    opacity: 1
+
+@keyframes anim-bottom
+  0%
+    transform: translatey(-100%)
+    opacity: 0
+  75%
+    transform: translateX(0)
+  100%
+    opacity: 1
 
 @media screen and (max-width: 1200px)
   .str 
@@ -733,9 +784,6 @@ input.submit
 
   .block-title
     text-align: left
-
-  .slide 
-    padding: 0 43%
 
   .info 
     display: flex
@@ -800,9 +848,6 @@ input.submit
   .slider-wrapper 
     width: 80%
 
-  .slide 
-    padding: 0 42%
-
 @media screen and (max-width: 520px)
   h1
     font-size: 2rem
@@ -845,9 +890,6 @@ input.submit
   .slider-wrapper 
     width: 85%
 
-  .slide
-    padding: 0 38%
-
   .info
     flex-direction: column
     justify-content: center
@@ -880,4 +922,3 @@ input.submit
     text-align: center
     padding: 10px 0
     margin: 0
-
