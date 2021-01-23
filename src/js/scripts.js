@@ -1,19 +1,24 @@
-let aboutUsText = document.querySelector(".about-us-line"),      //site navigation
-
+let animLeft = document.querySelectorAll(".animation-left"),      //scroll animation
+    animRight = document.querySelectorAll(".animation-right"),
+    animBottom = document.querySelectorAll(".animation-bottom"),
+    animFade = document.querySelectorAll(".animation-fade"),
+    startAnim = window.innerHeight - (window.innerHeight*10/100),
     burger = document.querySelector(".burger-menu"),     //burger menu
     burgerMenu = document.querySelector(".menu"),
     menuLine = document.querySelector(".line-menu"),
     registration = document.querySelector(".registration"),    //popup call button
     popup = document.querySelector(".popup"),     //popup with background 
     popupForm = document.querySelector(".popup-form"),      //popup
+    popupName = document.querySelector("#popup-name"),
+    popupEmail = document.querySelector("#popup-email"),
     closePopup = document.querySelectorAll(".close-popup"),     //close popup
     activePopup,
     left = document.querySelector(".str-left"),        //slider with people. slide left
     right = document.querySelector(".str-right"),        //slider with people. slide right
     peopleSlider = document.querySelector(".people-line"), 
     peoples = document.querySelectorAll(".people"),       
-    peopleWidth = peoples[0].clientWidth,
-    peopleSliderWidth = peopleSlider.getBoundingClientRect().width,
+    peopleWidth = peoples[0].getBoundingClientRect().width,
+    peopleSliderWidth = Math.round(peopleSlider.getBoundingClientRect().width),
     filter = document.querySelectorAll(".filter"),     //filters
     filterName,
     filterImages = document.querySelectorAll(".l-w-photo"),
@@ -48,7 +53,52 @@ let aboutUsText = document.querySelector(".about-us-line"),      //site navigati
     subjectCheck = document.querySelector(".subject-check"),
     companyNameCheck = document.querySelector(".company-name-check"),
     messageCheck = document.querySelector(".message-check"),
-    registrCheckInputs = [nameCheck, emailCheck, subjectCheck, companyNameCheck, messageCheck]
+    registrCheckInputs = [nameCheck, emailCheck, subjectCheck, companyNameCheck, messageCheck],
+    date = new Date(),
+    colors = ["rgba(26, 229, 217, 0.02)", "rgba(0, 0, 0, 0.02)", "rgba(255, 0, 26, 0.02)"]
+
+window.onbeforeunload = () => {
+  localStorage.setItem("lastVisit", `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`)
+  if(popupName.value != ""){
+    localStorage.name = popupName.value
+  }
+  if(popupEmail.value != ""){
+    localStorage.email = popupEmail.value
+  }
+}
+
+if(localStorage.bgColor == undefined){
+  localStorage.bgColor = colors[0]
+}else{
+  for(let i = 0; i < colors.length; i++){
+    if(localStorage.bgColor == colors[i]){
+      if(colors.indexOf(colors[i]) == colors.length - 1){
+        localStorage.bgColor = colors[0]
+        break
+      }else{
+        localStorage.bgColor = colors[colors.indexOf(colors[i])+1]
+        break
+      }
+    }
+  }
+}
+
+document.body.style.backgroundColor = localStorage.bgColor
+
+if(localStorage.name != undefined){
+  popupName.value = localStorage.name
+}
+if(localStorage.email != undefined){
+  popupEmail.value = localStorage.email
+}
+
+
+if(localStorage.visitCount === undefined){
+  localStorage.visitCount = 1
+}else{
+  localStorage.visitCount = Number(localStorage.visitCount) + 1
+}
+
 
 burger.dataset.activeCheck = "false"
 
@@ -97,12 +147,14 @@ function checkClick (e){
 //people slider 
 left.onclick = peopleLeft
 right.onclick = peopleRight
+left.ondblclick = peopleFalse
+right.ondblclick = peopleFalse
 
 function peopleLeft (event){
   event.preventDefault()
   peopleSliderWidth = Math.floor(peopleSliderWidth)
   if(peopleSlider.scrollLeft == 0){
-    peopleSlider.scroll(peopleSliderWidth, 0)
+    peopleSlider.scroll(peopleSlider.scrollWidth, 0)
   }else{
     peopleSlider.scroll(peopleSlider.scrollLeft-peopleWidth, 0)
   }
@@ -111,12 +163,34 @@ function peopleLeft (event){
 function peopleRight (event){
   event.preventDefault()
   peopleSliderWidth = Math.floor(peopleSliderWidth)
-  if(peopleSlider.scrollLeft == (peoples.length-4)*peopleWidth){
+  if(Math.round(peopleSlider.scrollLeft)-10 <= peopleSlider.scrollWidth - peopleSliderWidth && Math.round(peopleSlider.scrollLeft)+10 >= peopleSlider.scrollWidth - peopleSliderWidth){
     peopleSlider.scroll(0, 0)
   }else{
-    peopleSlider.scroll(peopleSlider.scrollLeft+peopleWidth, 0)
+    peopleSlider.scroll(peopleSlider.scrollLeft+=peopleWidth, 0)
   }
 }
+
+function peopleFalse (){
+  return false;
+}
+
+if(localStorage.filter != undefined){
+  filter.forEach((element)=>{
+    if(element.textContent == localStorage.filter){
+      element.classList.add("active-filter")
+      filterName = element.textContent
+      filterImages.forEach((image)=>{
+        if(filterName == "All" || image.classList.contains(filterName)){
+          image.style.display = "block"
+        }else{
+          image.style.display = "none"
+        }    
+      })
+    }
+  })
+}
+
+
 
 filter.forEach((element)=>{
   element.onclick = filtration
@@ -124,6 +198,13 @@ filter.forEach((element)=>{
 
 function filtration (event){
   event.preventDefault()
+  if(localStorage.filter != this.textContent){
+    localStorage.filter = this.textContent
+  }
+  filter.forEach((element)=>{
+    element.classList.remove("active-filter")
+  })
+  this.classList.add("active-filter")
   filterName = this.textContent
   filterImages.forEach((image)=>{
     if(filterName == "All" || image.classList.contains(filterName)){
@@ -278,7 +359,7 @@ function lPopupOpen (event){
       registrCheckInputs[i].value = registrInputs[i].value
       lPopup.classList.add("active-popup")
       activePopup = document.querySelector(".active-popup")
-      activePopup.onclick = checkClick
+      activePopup.onclick = checkClick 
     }else{
       registrInputs[i].style.borderColor = `#c0301c`
       lPopup.style.display = `none`
@@ -288,12 +369,27 @@ function lPopupOpen (event){
 }
 //animations 
 window.onwheel = checkScroll
+window.onscroll = checkScroll
 
 function checkScroll (){
-  console.log(Math.floor(window.pageYOffset))
-  if(Math.floor(window.pageYOffset) >= aboutUsText.firstElementChild.offsetTop-300 && Math.floor(window.pageYOffset) <= aboutUsText.firstElementChild.offsetTop-50){
-    console.log("13")
-    aboutUsText.firstElementChild.classList.add("animation-left")
-    aboutUsText.lastElementChild.classList.add("animation-right")
-  }
+  animLeft.forEach((elem)=>{  
+    if(window.pageYOffset + startAnim >= elem.offsetTop && window.pageYOffset <= elem.offsetTop){
+      elem.classList.remove("animation-left")
+    }
+  })
+  animRight.forEach((elem)=>{  
+    if(window.pageYOffset + startAnim >= elem.offsetTop && window.pageYOffset <= elem.offsetTop){
+      elem.classList.remove("animation-right")
+    }
+  })
+  animBottom.forEach((elem)=>{  
+    if(window.pageYOffset + startAnim >= elem.offsetTop && window.pageYOffset <= elem.offsetTop){
+      elem.classList.remove("animation-bottom")
+    }
+  })
+  animFade.forEach((elem)=>{  
+    if(window.pageYOffset + startAnim >= elem.offsetTop && window.pageYOffset <= elem.offsetTop){
+      elem.classList.remove("animation-fade")
+    }
+  })
 }

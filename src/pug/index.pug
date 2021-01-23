@@ -29,32 +29,32 @@ html(lang="en")
 			.scroll-button
 			.wrapper 
 				section.services 
-					h2 Services
-					p.subtitle We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+					h2.animation-fade Services
+					p.subtitle.animation-fade We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
 					.features-line 
-						.feature.typography
+						.feature.typography.animation-left
 							span.hover
 							.picture
 							strong.feature-title Clean Typography
 							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
-						.feature.code
+						.feature.code.animation-fade
 							span.hover
 							.picture
 							strong.feature-title Rock Solid Code
 							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
-						.feature.support
+						.feature.support.animation-right
 							span.hover
 							.picture
 							strong.feature-title Expert Support
 							p.about-feature Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
 			section.about-us 
 				.wrapper 
-					h2 About us 
-					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+					h2.animation-fade About us 
+					p.subtitle.animation-fade Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
 					.about-us-line 
-						p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
-						p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
-					.people-relative
+						p.animation-left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+						p.animation-right Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
+					.people-relative.animation-fade
 						a.str.str-left(href="#")
 						a.str.str-right(href="#")
 						.people-line
@@ -68,8 +68,8 @@ html(lang="en")
 							+people('img/people_sixth.jpg', '#', '#', '#', '#', 'Lorem, ipsum.', 'Lorem, ipsum dolor.')
 			.wrapper 
 				section.latest-work
-					h2 Latest Works
-					ul.l-w-menu 
+					h2.animation-fade Latest Works
+					ul.l-w-menu.animation-fade
 						li
 							a.filter(href="#") All
 						li
@@ -80,7 +80,7 @@ html(lang="en")
 							a.filter(href="#") Development
 						li
 							a.filter(href="#") Strategy
-					.l-w-list 
+					.l-w-list.animation-fade 
 						+last-work("img/lw_first.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
 						+last-work("img/lw_second.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Branding")
 						+last-work("img/lw_third.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
@@ -90,17 +90,17 @@ html(lang="en")
 						+last-work("img/lw_seventh.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Strategy")
 						+last-work("img/lw_eighth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
 						+last-work("img/lw_ninth.jpg", "Hair Dresser", "Branding", "#", "l-w-photo Design")
-			section.like 
-				.wrapper 
+			section.like.animation-fade  
+				.wrapper
 					p.lets-talk Do you like OUR WORK so far? <br> Let's talk about YOUR PROJECT!
 					a.button.scroll-down-button Get in Touch
 			.wrapper 
 				section.blog 
-					h2 Recent blog posts 
-					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet 
+					h2.animation-fade  Recent blog posts 
+					p.subtitle.animation-fade  Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet 
 					.post 
-						img(src="img/blog_first.jpg", alt="Startup ideas")
-						.post-info 
+						img(src="img/blog_first.jpg", alt="Startup ideas").animation-left
+						.post-info.animation-right
 							.date 
 								p.number 18 
 								p.month Oct
@@ -115,8 +115,8 @@ html(lang="en")
 					.popup-read-more
 					hr 
 					.post 
-						img(src="img/blog_second.jpg", alt="Startup ideas")
-						.post-info 
+						img(src="img/blog_second.jpg", alt="Startup ideas").animation-left
+						.post-info.animation-right
 							.date 
 								p.number 18 
 								p.month Oct
@@ -130,13 +130,13 @@ html(lang="en")
 							a.read-more(href="#") Read more 
 			section.slider 
 				.slider-wrapper 
-					.companies 
+					.companies.animation-fade 
 						img(src="img/logo_first.png", alt="Deorham networks")
 						img(src="img/logo_second.png", alt="Ratings")
 						img(src="img/logo_third.png", alt="Malik Media")
 						img(src="img/logo_fourth.png", alt="Bcause")
 						img(src="img/logo_fifth.png", alt="Womqily")
-					.cites 
+					.cites.animation-fade 
 						blockquote.cite
 							p “Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
 							cite John Doe, Google Inc.
@@ -146,15 +146,15 @@ html(lang="en")
 						blockquote.cite
 							p “Life is what happens to us while we are making other plans.”
 							cite Allen Saunders, writer.
-					.slide 
+					.slide.animation-fade 
 						span#sdf1.slide-button
 						span#sdf2.slide-button
 						span#sdf3.slide-button
 			.wrapper 
 				section.registr 
-					h2 Get in touch 
-					p.subtitle Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-					.info 
+					h2.animation-fade Get in touch 
+					p.subtitle.animation-fade Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+					.info.animation-left 
 						.address 
 							b.myriad Address
 							p.first 312, 7th Ave, New York
@@ -167,7 +167,7 @@ html(lang="en")
 							b.myriad E-mail 
 							p.first shapedtheme@gmail.com 
 							p.second khalilkode@gmail.com 	
-					form.registr-form(method="GET")
+					form.registr-form(method="GET").animation-right
 						.mini-input-line 
 							input#name.mini-input(type="text", name="name" placeholder="Your name" maxlength="30")
 							label(for="name")

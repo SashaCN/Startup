@@ -49,6 +49,7 @@ html
 body 
   font-family: 'Roboto Slab', serif
   margin: 0 
+  overflow-x: hidden
 
 a 
   text-decoration: none
@@ -270,10 +271,7 @@ h2,
   p 
     line-height: 1.6rem
     margin: 0 16px
-    &:first-child
-      transform: translateX(-120%)
-    &:last-child
-      transform: translateX(120%)
+    transition: all 1s ease
 
 .people-relative
   position: relative
@@ -283,6 +281,7 @@ h2,
   display: flex
   justify-content: space-between
   margin: 0 -15px
+  scroll-behavior: smooth
 
 .str
   position: absolute 
@@ -389,6 +388,9 @@ h2,
     transition: all .5 ease
     &:hover 
       color: $primary
+  .active-filter
+    color: $primary
+
 
 .l-w-list 
   display: flex 
@@ -688,54 +690,33 @@ input.submit
   background-color: #fff
   border-radius: 30px
 
+.feature,
+section h2,
+section:first-child p,
+.people-relative,
+.l-w-menu,
+.l-w-list,
+.like,
+.post img,
+.post-info,
+.companies,
+.cites,
+.slide,
+.info,
+.registr-form
+  transition: all .5s ease
+
 .animation-fade
-  animation: fade 1s linear
-  animation-fill-mode: forwards
+  opacity: 0
 
 .animation-left
-  animation: anim-left 1s linear 
-  animation-fill-mode: forwards
+  transform: translateX(-150%)
 
 .animation-right 
-  animation: anim-right 1s linear 
-  animation-fill-mode: backwards
+  transform: translateX(150%)
 
 .animation-bottom 
-  animation: anim-bottom 1s linear 
-  animation-fill-mode: backwards
-
-@keyframes fade
-  0%
-    opacity: 0
-  100%
-    opacity: 1
-
-@keyframes anim-left
-  0%
-    transform: translateX(-100%)
-    opacity: 0
-  75%
-    transform: translateX(0)
-  100%
-    opacity: 1
-
-@keyframes anim-right
-  0%
-    transform: translateX(100%)
-    opacity: 0
-  75%
-    transform: translateX(0)
-  100%
-    opacity: 1
-
-@keyframes anim-bottom
-  0%
-    transform: translatey(-100%)
-    opacity: 0
-  75%
-    transform: translateX(0)
-  100%
-    opacity: 1
+  transform: translateY(150%)
 
 @media screen and (max-width: 1200px)
   .str 
@@ -859,6 +840,7 @@ input.submit
   .about-us-line
     flex-wrap: wrap
     text-align: center
+    overflow: hidden
     p 
       margin-bottom: 15px
 
